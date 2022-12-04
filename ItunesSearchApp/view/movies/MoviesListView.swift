@@ -20,6 +20,8 @@ struct MoviesListView: View {
                         MoviesRowView(movie: movie)
                     }
                 }
+                ListPlaceholderRowView(state: viewModel.state,
+                                       loadMore: viewModel.loadMore)
             }
             .listStyle(.plain)
         

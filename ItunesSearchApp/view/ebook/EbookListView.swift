@@ -20,6 +20,8 @@ struct EbookListView: View {
                     EbookRowView(ebook: ebook)
                 }
             }
+            ListPlaceholderRowView(state: viewModel.state,
+                                   loadMore: viewModel.loadMore)
         }
         .listStyle(.plain)
         

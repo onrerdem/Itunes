@@ -21,6 +21,8 @@ struct  MusicListView: View {
                     MusicRowView(music: music)
                 }
             }
+            ListPlaceholderRowView(state: viewModel.state,
+                                   loadMore: viewModel.loadMore)
         }
         .listStyle(.plain)
     }

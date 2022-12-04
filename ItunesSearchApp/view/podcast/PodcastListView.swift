@@ -20,6 +20,8 @@ struct PodcastListView: View {
                     PodcastRowView(podcast: podcast)
                 }
             }
+            ListPlaceholderRowView(state: viewModel.state,
+                                   loadMore: viewModel.loadMore)
         }
         .listStyle(.plain)
         

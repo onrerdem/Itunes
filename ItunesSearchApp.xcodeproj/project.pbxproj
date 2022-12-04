@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13270B9E293D2B3E0035046B /* ListPlaceholderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13270B9D293D2B3E0035046B /* ListPlaceholderRowView.swift */; };
 		135C3777293A950B00041285 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C3776293A950B00041285 /* Constant.swift */; };
 		135C3779293A978200041285 /* IServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C3778293A978200041285 /* IServiceManager.swift */; };
 		135C377C293A9DD500041285 /* EbookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C377B293A9DD500041285 /* EbookListViewModel.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13270B9D293D2B3E0035046B /* ListPlaceholderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlaceholderRowView.swift; sourceTree = "<group>"; };
 		135C3776293A950B00041285 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		135C3778293A978200041285 /* IServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IServiceManager.swift; sourceTree = "<group>"; };
 		135C377B293A9DD500041285 /* EbookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EbookListViewModel.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				17F436D2289025420001D592 /* ImageLoadingView.swift */,
+				13270B9D293D2B3E0035046B /* ListPlaceholderRowView.swift */,
 			);
 			path = helper;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				13C269A6293C0B23003C3BB3 /* MusicDetailView.swift in Sources */,
 				17F436CB289020C20001D592 /* MusicRowView.swift in Sources */,
 				17DCA95E288E999E00F20AD8 /* ItunesSearchAppApp.swift in Sources */,
+				13270B9E293D2B3E0035046B /* ListPlaceholderRowView.swift in Sources */,
 				17DCA96F288E9A1500F20AD8 /* Album.swift in Sources */,
 				17F4369D288EF8630001D592 /* APIService.swift in Sources */,
 				17F436C1289008B40001D592 /* SearchView.swift in Sources */,
