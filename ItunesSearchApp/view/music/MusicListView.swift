@@ -25,10 +25,10 @@ struct  MusicListView: View {
                                    loadMore: viewModel.loadMore)
         }
         .listStyle(.plain)
+        
     }
-    
-    
 }
+
 
 struct MusicListView_Previews: PreviewProvider {
     static var previews: some View {
