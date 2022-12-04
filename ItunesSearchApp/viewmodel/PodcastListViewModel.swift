@@ -58,7 +58,7 @@ final class PodcastListViewModel: ObservableObject {
         
         state = .isLoading
         
-        service.fetch(type: AlbumResult.self, searchTerm: searchTerm, page: page, limit: limit)
+        service.fetch(type: AlbumResult.self, searchTerm: searchTerm, entity: EntityType.podcast, page: page, limit: limit)
         { [weak self]  result in
             DispatchQueue.main.async {
                 switch result {

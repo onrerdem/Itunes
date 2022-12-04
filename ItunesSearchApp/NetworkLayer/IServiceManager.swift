@@ -8,6 +8,6 @@
 import Foundation
 
 protocol IServiceManager {
-    func fetch<T : Codable>(type: T.Type, searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<T, APIError>) -> Void)
+    func fetch<T : Codable>(type: T.Type, searchTerm: String, entity: EntityType,page: Int, limit: Int, completion: @escaping (Result<T, APIError>) -> Void)
     func createURL(for searchTerm: String, type: EntityType, page: Int?, limit: Int?) -> URL?
 }

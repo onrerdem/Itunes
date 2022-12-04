@@ -8,9 +8,9 @@
 import Foundation
 
 struct APIService : IServiceManager {
-    func fetch<T>(type: T.Type, searchTerm: String, page: Int, limit: Int, completion: @escaping (Result<T, APIError>) -> Void) where T : Decodable, T : Encodable {
+    func fetch<T>(type: T.Type, searchTerm: String, entity: EntityType, page: Int, limit: Int, completion: @escaping (Result<T, APIError>) -> Void) where T : Decodable, T : Encodable {
 
-        guard let url = createURL(for: searchTerm, type: .podcast, page: page, limit: limit) else {
+        guard let url = createURL(for: searchTerm, type: entity, page: page, limit: limit) else {
                     let error = APIError.badURL
                     completion(Result.failure(error))
                     return
