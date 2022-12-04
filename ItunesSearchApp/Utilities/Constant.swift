@@ -5,7 +5,8 @@
 //
 
 import Foundation
+// https://itunes.apple.com/search?term=jack&entity=music&limit=20&offset=0
 
 struct Constant {
-    static let baseURL = "https://itunes.apple.com/lookup"
+    static let baseURL = "https://itunes.apple.com/search"
 }

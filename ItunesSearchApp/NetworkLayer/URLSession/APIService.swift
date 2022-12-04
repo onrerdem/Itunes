@@ -16,6 +16,8 @@ struct APIService : IServiceManager {
                     return
                 }
         
+        print(url.absoluteString)
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
 
             if let error = error as? URLError {
