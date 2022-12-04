@@ -26,7 +26,7 @@ struct ListPlaceholderRowView: View {
             case .loadedAll:
                 EmptyView()
         case .noResults:
-                Text("Sorry Could not find anything.")
+                Text("There is no data API...")
                     .foregroundColor(.gray)
             case .error(let message):
                 Text(message)

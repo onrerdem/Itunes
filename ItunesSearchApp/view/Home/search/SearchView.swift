@@ -33,14 +33,7 @@ struct SearchView: View {
                 
                 Divider()
                 Spacer()
-                
-                if searchTerm.count == 0 {
-                    
-                    ListPlaceholderRowView(state: .noResults,
-                                           loadMore: { })
-                        .frame(maxHeight: .infinity)
-                    
-                }
+
                 if searchTerm.count > 1 {
                     
                     switch selectedEntityType {
@@ -66,6 +59,10 @@ struct SearchView: View {
                                 movieListViewModel.searchTerm = searchTerm
                             }
                     }
+                }else{
+                    ListPlaceholderRowView(state: .noResults,
+                                           loadMore: { })
+                        .frame(maxHeight: .infinity)
                 }
                 
             }
