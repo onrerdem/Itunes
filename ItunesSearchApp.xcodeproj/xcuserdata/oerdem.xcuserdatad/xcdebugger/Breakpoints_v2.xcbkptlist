@@ -3,4 +3,70 @@
    uuid = "D36C23A8-2645-4308-AB53-647C39DB16CB"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "21C65511-34AF-4942-BE85-150E20A1BB9B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ItunesSearchApp/NetworkLayer/URLSession/APIService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "fetch(type:searchTerm:entity:page:limit:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "21C65511-34AF-4942-BE85-150E20A1BB9B - d36e38a96b3e1d96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ItunesSearchApp.APIService.fetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, searchTerm: Swift.String, entity: ItunesSearchApp.EntityType, page: Swift.Int, limit: Swift.Int, completion: (Swift.Result&lt;&#x3c4;_0_0, ItunesSearchApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ItunesSearchApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oerdem/Desktop/ItunesSearchApp/ItunesSearchApp/NetworkLayer/URLSession/APIService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "640">
+               </Location>
+               <Location
+                  uuid = "21C65511-34AF-4942-BE85-150E20A1BB9B - fff09b4d460d7aaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ItunesSearchApp.APIService.fetch&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(type: &#x3c4;_0_0.Type, searchTerm: Swift.String, entity: ItunesSearchApp.EntityType, page: Swift.Int, limit: Swift.Int, completion: (Swift.Result&lt;&#x3c4;_0_0, ItunesSearchApp.APIError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ItunesSearchApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oerdem/Desktop/ItunesSearchApp/ItunesSearchApp/NetworkLayer/URLSession/APIService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "708">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "89D791B0-3026-41D1-BB14-18BAC6EE1741"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ItunesSearchApp/NetworkLayer/URLSession/APIService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "fetch(type:searchTerm:entity:page:limit:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
