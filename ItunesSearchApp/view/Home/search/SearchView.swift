@@ -34,6 +34,13 @@ struct SearchView: View {
                 Divider()
                 Spacer()
                 
+                if searchTerm.count == 0 {
+                    
+                    ListPlaceholderRowView(state: .noResults,
+                                           loadMore: { })
+                        .frame(maxHeight: .infinity)
+                    
+                }
                 if searchTerm.count > 1 {
                     
                     switch selectedEntityType {
