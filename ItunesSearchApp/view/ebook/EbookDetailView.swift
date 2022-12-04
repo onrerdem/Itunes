@@ -21,6 +21,7 @@ struct EbookDetailView: View {
                     .font(.caption)
                     .foregroundColor(.gray)
                 Text(ebook.releaseDate.formatted())
+                Text(String(ebook.collectionPrice ?? 0.0))
             }
             .lineLimit(1)
 

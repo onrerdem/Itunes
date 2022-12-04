@@ -23,6 +23,7 @@ struct MusicDetailView: View {
                     .font(.caption)
                     .foregroundColor(.gray)
                 Text(music.releaseDate.formatted())
+                Text(String(music.collectionPrice ?? 0.0))
             }
             .lineLimit(1)
 

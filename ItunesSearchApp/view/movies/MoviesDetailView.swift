@@ -21,6 +21,7 @@ struct MoviesDetailView: View {
                     .font(.caption)
                     .foregroundColor(.gray)
                 Text(movie.releaseDate.formatted())
+                Text(String(movie.collectionPrice ?? 0.0))
             }
             .lineLimit(1)
 

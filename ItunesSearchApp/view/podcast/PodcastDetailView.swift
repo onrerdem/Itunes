@@ -21,6 +21,7 @@ struct PodcastDetailView: View {
                     .font(.caption)
                     .foregroundColor(.gray)
                 Text(podcast.releaseDate.formatted())
+                Text(String(podcast.collectionPrice ?? 0.0))
             }
             .lineLimit(1)
 
