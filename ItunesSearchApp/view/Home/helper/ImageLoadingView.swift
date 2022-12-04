@@ -35,6 +35,6 @@ struct ImageLoadingView: View {
 
 struct ImageLoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageLoadingView(urlString: "", size: 100)
+        ImageLoadingView(urlString: "https://is2-ssl.mzstatic.com/image/thumb/Music114/v4/43/d0/ba/43d0ba6b-6470-ad2d-0c84-171c1daea838/12UMGIM10699.rgb.jpg/100x100bb.jpg", size: 100)
     }
 }
