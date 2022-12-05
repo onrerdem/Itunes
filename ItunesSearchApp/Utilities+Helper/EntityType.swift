@@ -10,8 +10,8 @@ import Foundation
 enum EntityType: String, Identifiable, CaseIterable {
     case podcast
     case ebook
-    case music
-    case movies
+    case song
+    case movie
     
     var id: String {
         self.rawValue
@@ -23,9 +23,9 @@ enum EntityType: String, Identifiable, CaseIterable {
                 return "podcast"
             case .ebook:
                 return "ebook"
-            case .music:
+            case .song:
                 return "song"
-            case .movies:
+            case .movie:
                 return "movie"
         }
     }

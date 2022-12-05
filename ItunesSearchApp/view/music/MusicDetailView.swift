@@ -9,20 +9,20 @@ import SwiftUI
 
 struct MusicDetailView: View {
     
-    let music: Album
+    let music: Song
     
     var body: some View {
         VStack {
             
-            ImageLoadingView(urlString: music.artworkUrl60,
+            ImageLoadingView(urlString: music.artworkUrl60!,
                              size: 200)
             
             VStack(alignment: .center) {
-                Text(music.artistName)
-                Text(music.collectionName)
+                Text(music.artistName!)
+                Text(music.collectionName!)
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(music.releaseDate.formatted())
+                Text(music.releaseDate?.formatted() ?? Date().formatted())
                 Text(String(music.collectionPrice ?? 0.0))
             }
             .lineLimit(1)
@@ -33,6 +33,6 @@ struct MusicDetailView: View {
 
 struct MusicDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicDetailView(music: Album.example())
+        MusicDetailView(music: Song.example())
     }
 }

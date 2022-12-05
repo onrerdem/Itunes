@@ -48,12 +48,12 @@ struct SearchView: View {
                             .onAppear {
                                 podcastListViewModel.searchTerm = searchTerm
                             }
-                    case .music:
+                    case .song :
                         MusicListView(viewModel: musicListViewModel)
                             .onAppear {
                                 musicListViewModel.searchTerm = searchTerm
                             }
-                    case .movies:
+                    case .movie:
                         MoviesListView(viewModel: movieListViewModel)
                             .onAppear {
                                 movieListViewModel.searchTerm = searchTerm
@@ -81,10 +81,10 @@ struct SearchView: View {
             case .podcast:
                 podcastListViewModel.searchTerm = newValue
                 
-            case .music:
+            case .song:
                 musicListViewModel.searchTerm = newValue
                 
-            case .movies:
+            case .movie:
                 movieListViewModel.searchTerm = newValue
             }
         }

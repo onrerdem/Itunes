@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct PodcastRowView: View {
-    let podcast: Album
+    let podcast: Podcast
     
     var body: some View {
         HStack {
             
-            ImageLoadingView(urlString: podcast.artworkUrl60,
+            ImageLoadingView(urlString: podcast.artworkUrl60!,
                              size: 60)
             
             VStack(alignment: .leading) {
-                Text(podcast.artistName + " - " + podcast.collectionName)
+                Text(podcast.artistName! + " - " + podcast.collectionName!)
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -28,6 +28,6 @@ struct PodcastRowView: View {
 }
 struct PodcastRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PodcastRowView(podcast: Album.example())
+        PodcastRowView(podcast: Podcast.example())
     }
 }

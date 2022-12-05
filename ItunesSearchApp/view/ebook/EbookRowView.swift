@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct EbookRowView: View {
-    let ebook: Album
+    let ebook: Ebook
     
     var body: some View {
         HStack {
             
-            ImageLoadingView(urlString: ebook.artworkUrl60,
+            ImageLoadingView(urlString: ebook.artworkUrl60!,
                              size: 60)
             
             VStack(alignment: .leading) {
-                Text(ebook.artistName + " - " + ebook.collectionName)
+                Text(ebook.artistName! + " - " + ebook.trackName!)
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -28,6 +28,6 @@ struct EbookRowView: View {
 }
 struct EbookRowView_Previews: PreviewProvider {
     static var previews: some View {
-        EbookRowView(ebook: Album.example())
+        EbookRowView(ebook: Ebook.example())
     }
 }

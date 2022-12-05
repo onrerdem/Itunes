@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct PodcastDetailView: View {
-    let podcast: Album
+    let podcast: Podcast
     var body: some View {
         VStack {
             
-            ImageLoadingView(urlString: podcast.artworkUrl60,
+            ImageLoadingView(urlString: podcast.artworkUrl60!,
                              size: 200)
             
             VStack(alignment: .center) {
-                Text(podcast.artistName)
-                Text(podcast.collectionName)
+                Text(podcast.artistName!)
+                Text(podcast.collectionName!)
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(podcast.releaseDate.formatted())
-                Text(String(podcast.collectionPrice ?? 0.0))
+                Text(podcast.releaseDate?.formatted() ?? Date().formatted())
+                Text(String(podcast.collectionPrice ?? 0))
             }
             .lineLimit(1)
 
@@ -32,6 +32,6 @@ struct PodcastDetailView: View {
 
 struct PodcastDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PodcastDetailView(podcast: Album.example())
+        PodcastDetailView(podcast: Podcast.example())
     }
 }

@@ -12,7 +12,7 @@ import Combine
 final class MovieListViewModel: ObservableObject {
     
     @Published var searchTerm: String = ""
-    @Published var movies: [Album] = [Album]()
+    @Published var movies: [Movie] = [Movie]()
     
     @Published var state: FetchState = .good
     
@@ -31,7 +31,7 @@ final class MovieListViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
                 self?.clear()
-                self?.fetchAlbums(for: term)
+                self?.fetchMovies(for: term)
             }.store(in: &subscriptions)
         
     }
@@ -43,10 +43,10 @@ final class MovieListViewModel: ObservableObject {
     }
     
     func loadMore() {
-        fetchAlbums(for: searchTerm)
+        fetchMovies(for: searchTerm)
     }
 
-    func fetchAlbums(for searchTerm: String) {
+    func fetchMovies(for searchTerm: String) {
         
         guard !searchTerm.isEmpty else {
             return
@@ -58,7 +58,7 @@ final class MovieListViewModel: ObservableObject {
         
         state = .isLoading
         
-        service.fetch(type: AlbumResult.self, searchTerm: searchTerm, entity: EntityType.movies, page: page, limit: limit)
+        service.fetch(type: MovieResult.self, searchTerm: searchTerm, entity: EntityType.movie, page: page, limit: limit)
         { [weak self]  result in
             DispatchQueue.main.async {
                 switch result {
@@ -68,7 +68,7 @@ final class MovieListViewModel: ObservableObject {
                         }
                         self?.page += 1
                         self?.state = (results.results.count == self?.limit) ? .good : .loadedAll
-                        print("fetched albums \(results.resultCount)")
+                    print("fetched albums \(String(describing: results.resultCount))")
                         
                     case .failure(let error):
                         print("error loading albums: \(error)")
@@ -80,7 +80,7 @@ final class MovieListViewModel: ObservableObject {
     
     static func example() -> MovieListViewModel {
         let vm = MovieListViewModel()
-        vm.movies = [Album.example()]
+        vm.movies = [Movie.example()]
         return vm
     }
 }

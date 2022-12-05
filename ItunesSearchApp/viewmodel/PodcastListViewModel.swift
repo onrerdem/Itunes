@@ -12,7 +12,7 @@ import Combine
 final class PodcastListViewModel: ObservableObject {
     
     @Published var searchTerm: String = ""
-    @Published var podcasts: [Album] = [Album]()
+    @Published var podcasts: [Podcast] = [Podcast]()
     
     @Published var state: FetchState = .good
     
@@ -31,7 +31,7 @@ final class PodcastListViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
                 self?.clear()
-                self?.fetchAlbums(for: term)
+                self?.fetchPodcasts(for: term)
             }.store(in: &subscriptions)
         
     }
@@ -43,10 +43,10 @@ final class PodcastListViewModel: ObservableObject {
     }
     
     func loadMore() {
-        fetchAlbums(for: searchTerm)
+        fetchPodcasts(for: searchTerm)
     }
 
-    func fetchAlbums(for searchTerm: String) {
+    func fetchPodcasts(for searchTerm: String) {
         
         guard !searchTerm.isEmpty else {
             return
@@ -58,17 +58,17 @@ final class PodcastListViewModel: ObservableObject {
         
         state = .isLoading
         
-        service.fetch(type: AlbumResult.self, searchTerm: searchTerm, entity: EntityType.podcast, page: page, limit: limit)
+        service.fetch(type: PodcastResult.self, searchTerm: searchTerm, entity: EntityType.podcast, page: page, limit: limit)
         { [weak self]  result in
             DispatchQueue.main.async {
                 switch result {
                     case .success(let results):
-                        for album in results.results {
+                    for album in results.results {
                             self?.podcasts.append(album)
                         }
                         self?.page += 1
                         self?.state = (results.results.count == self?.limit) ? .good : .loadedAll
-                        print("fetched albums \(results.resultCount)")
+                    print("fetched albums \(String(describing: results.resultCount))")
                         
                     case .failure(let error):
                         print("error loading albums: \(error)")
@@ -80,7 +80,7 @@ final class PodcastListViewModel: ObservableObject {
     
     static func example() -> PodcastListViewModel {
         let vm = PodcastListViewModel()
-        vm.podcasts = [Album.example()]
+        vm.podcasts = [Podcast.example()]
         return vm
     }
 }

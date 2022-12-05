@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct MoviesDetailView: View {
-    let movie: Album
+    let movie: Movie
     var body: some View {
         VStack {
             
-            ImageLoadingView(urlString: movie.artworkUrl60,
+            ImageLoadingView(urlString: movie.artworkUrl60!,
                              size: 200)
             
             VStack(alignment: .center) {
-                Text(movie.artistName)
-                Text(movie.collectionName)
+                Text(movie.artistName!)
+                Text(movie.collectionName!)
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(movie.releaseDate.formatted())
+                Text(movie.releaseDate?.formatted() ?? Date().formatted())
                 Text(String(movie.collectionPrice ?? 0.0))
             }
             .lineLimit(1)
@@ -31,6 +31,6 @@ struct MoviesDetailView: View {
 
 struct MoviesDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviesDetailView(movie: Album.example())
+        MoviesDetailView(movie: Movie.example())
     }
 }

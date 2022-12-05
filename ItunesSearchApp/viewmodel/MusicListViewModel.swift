@@ -12,7 +12,7 @@ import Combine
 final class MusicListViewModel: ObservableObject {
     
     @Published var searchTerm: String = ""
-    @Published var musics: [Album] = [Album]()
+    @Published var musics: [Song] = [Song]()
     
     @Published var state: FetchState = .good
     
@@ -32,7 +32,7 @@ final class MusicListViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
                 self?.clear()
-                self?.fetchAlbums(for: term)
+                self?.fetchSongs(for: term)
             }.store(in: &subscriptions)
         
     }
@@ -44,10 +44,10 @@ final class MusicListViewModel: ObservableObject {
     }
     
     func loadMore() {
-        fetchAlbums(for: searchTerm)
+        fetchSongs(for: searchTerm)
     }
 
-    func fetchAlbums(for searchTerm: String) {
+    func fetchSongs(for searchTerm: String) {
         
         guard !searchTerm.isEmpty else {
             return
@@ -59,7 +59,7 @@ final class MusicListViewModel: ObservableObject {
         
         state = .isLoading
         
-        service.fetch(type: AlbumResult.self, searchTerm: searchTerm, entity: EntityType.music, page: page, limit: limit)
+        service.fetch(type: SongResult.self, searchTerm: searchTerm, entity: EntityType.song, page: page, limit: limit)
         { [weak self]  result in
             DispatchQueue.main.async {
                 switch result {
@@ -69,7 +69,7 @@ final class MusicListViewModel: ObservableObject {
                         }
                         self?.page += 1
                         self?.state = (results.results.count == self?.limit) ? .good : .loadedAll
-                        print("fetched albums \(results.resultCount)")
+                    print("fetched albums \(String(describing: results.resultCount))")
                         
                     case .failure(let error):
                         print("error loading albums: \(error)")
@@ -81,7 +81,7 @@ final class MusicListViewModel: ObservableObject {
     
     static func example() -> MusicListViewModel {
         let vm = MusicListViewModel()
-        vm.musics = [Album.example()]
+        vm.musics = [Song.example()]
         return vm
     }
 }

@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct EbookDetailView: View {
-    let ebook: Album
+    let ebook: Ebook
     var body: some View {
         VStack {
             
-            ImageLoadingView(urlString: ebook.artworkUrl60,
+            ImageLoadingView(urlString: ebook.artworkUrl60!,
                              size: 200)
             
             VStack(alignment: .center) {
-                Text(ebook.artistName)
-                Text(ebook.collectionName)
+                Text(ebook.artistName!)
+                Text(ebook.trackName!)
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(ebook.releaseDate.formatted())
-                Text(String(ebook.collectionPrice ?? 0.0))
+                Text(ebook.releaseDate?.formatted() ?? Date().formatted())
+                Text(String(ebook.price ?? 0.0))
             }
             .lineLimit(1)
 
@@ -32,6 +32,6 @@ struct EbookDetailView: View {
 
 struct EbookDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        EbookDetailView(ebook: Album.example())
+        EbookDetailView(ebook: Ebook.example())
     }
 }

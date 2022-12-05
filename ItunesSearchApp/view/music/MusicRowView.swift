@@ -9,16 +9,16 @@ import SwiftUI
 
 struct MusicRowView: View {
     
-    let music: Album
+    let music: Song
     
     var body: some View {
         HStack {
             
-            ImageLoadingView(urlString: music.artworkUrl60,
+            ImageLoadingView(urlString: music.artworkUrl60!,
                              size: 60)
             
             VStack(alignment: .leading) {
-                Text(music.artistName + " - " + music.collectionName)
+                Text(music.artistName! + " - " + music.collectionName!)
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -30,6 +30,6 @@ struct MusicRowView: View {
 
 struct MusicRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicRowView(music: Album.example())
+        MusicRowView(music: Song.example())
     }
 }

@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct MoviesRowView: View {
-    let movie: Album
+    let movie: Movie
     
     var body: some View {
         HStack {
             
-            ImageLoadingView(urlString: movie.artworkUrl60,
+            ImageLoadingView(urlString: movie.artworkUrl60!,
                              size: 60)
             
             VStack(alignment: .leading) {
-                Text(movie.artistName + " - " + movie.collectionName)
+                Text(movie.artistName! + " - " + movie.collectionName!)
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -30,6 +30,6 @@ struct MoviesRowView: View {
 
 struct MoviesRowView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviesRowView(movie: Album.example())
+        MoviesRowView(movie: Movie.example())
     }
 }

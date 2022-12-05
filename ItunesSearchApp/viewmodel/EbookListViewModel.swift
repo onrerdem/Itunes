@@ -12,7 +12,7 @@ import Combine
 final class EbookListViewModel: ObservableObject {
     
     @Published var searchTerm: String = ""
-    @Published var ebooks: [Album] = [Album]()
+    @Published var ebooks: [Ebook] = [Ebook]()
     
     @Published var state: FetchState = .good
     
@@ -31,7 +31,7 @@ final class EbookListViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
                 self?.clear()
-                self?.fetchAlbums(for: term)
+                self?.fetchEbooks(for: term)
             }.store(in: &subscriptions)
         
     }
@@ -43,10 +43,10 @@ final class EbookListViewModel: ObservableObject {
     }
     
     func loadMore() {
-        fetchAlbums(for: searchTerm)
+        fetchEbooks(for: searchTerm)
     }
 
-    func fetchAlbums(for searchTerm: String) {
+    func fetchEbooks(for searchTerm: String) {
         
         guard !searchTerm.isEmpty else {
             return
@@ -58,7 +58,7 @@ final class EbookListViewModel: ObservableObject {
         
         state = .isLoading
         
-        service.fetch(type: AlbumResult.self, searchTerm: searchTerm, entity: EntityType.ebook, page: page, limit: limit)
+        service.fetch(type: EbookResult.self, searchTerm: searchTerm, entity: EntityType.ebook, page: page, limit: limit)
         { [weak self]  result in
             DispatchQueue.main.async {
                 switch result {
@@ -68,7 +68,7 @@ final class EbookListViewModel: ObservableObject {
                         }
                         self?.page += 1
                         self?.state = (results.results.count == self?.limit) ? .good : .loadedAll
-                        print("fetched albums \(results.resultCount)")
+                    print("fetched albums \(String(describing: results.resultCount))")
                         
                     case .failure(let error):
                         print("error loading albums: \(error)")
@@ -80,7 +80,7 @@ final class EbookListViewModel: ObservableObject {
     
     static func example() -> EbookListViewModel {
         let vm = EbookListViewModel()
-        vm.ebooks = [Album.example()]
+        vm.ebooks = [Ebook.example()]
         return vm
     }
 }
