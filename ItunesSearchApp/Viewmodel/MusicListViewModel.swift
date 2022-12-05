@@ -9,44 +9,45 @@ import Foundation
 import Combine
 
 
-final class MovieListViewModel: ObservableObject {
+final class MusicListViewModel: ObservableObject {
     
     @Published var searchTerm: String = ""
-    @Published var movies: [Movie] = [Movie]()
+    @Published var musics: [Song] = [Song]()
     
     @Published var state: FetchState = .good
     
     let limit: Int = 20
     var page: Int = 0
     
-     var service =  APIService()
+    var service : IServiceManager = APIService()
 
+    
     var subscriptions = Set<AnyCancellable>()
     
     init() {
-
+        
         $searchTerm
             .removeDuplicates()
             .dropFirst()
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] term in
                 self?.clear()
-                self?.fetchMovies(for: term)
+                self?.fetchSongs(for: term)
             }.store(in: &subscriptions)
         
     }
     
     func clear() {
         state = .good
-        movies = []
+        musics = []
         page = 0
     }
     
     func loadMore() {
-        fetchMovies(for: searchTerm)
+        fetchSongs(for: searchTerm)
     }
 
-    func fetchMovies(for searchTerm: String) {
+    func fetchSongs(for searchTerm: String) {
         
         guard !searchTerm.isEmpty else {
             return
@@ -58,13 +59,13 @@ final class MovieListViewModel: ObservableObject {
         
         state = .isLoading
         
-        service.fetch(type: MovieResult.self, searchTerm: searchTerm, entity: EntityType.movie, page: page, limit: limit)
+        service.fetch(type: SongResult.self, searchTerm: searchTerm, entity: EntityType.song, page: page, limit: limit)
         { [weak self]  result in
             DispatchQueue.main.async {
                 switch result {
                     case .success(let results):
                         for album in results.results {
-                            self?.movies.append(album)
+                            self?.musics.append(album)
                         }
                         self?.page += 1
                         self?.state = (results.results.count == self?.limit) ? .good : .loadedAll
@@ -78,9 +79,9 @@ final class MovieListViewModel: ObservableObject {
         }
     }
     
-    static func example() -> MovieListViewModel {
-        let vm = MovieListViewModel()
-        vm.movies = [Movie.example()]
+    static func example() -> MusicListViewModel {
+        let vm = MusicListViewModel()
+        vm.musics = [Song.example()]
         return vm
     }
 }

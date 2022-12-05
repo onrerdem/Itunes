@@ -101,15 +101,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		135C3774293A934F00041285 /* Utilities+Helper */ = {
+		135C3774293A934F00041285 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				17F436C2289009240001D592 /* EntityType.swift */,
 				17F436A0288EFA7F0001D592 /* FetchState.swift */,
 				135C3776293A950B00041285 /* Constant.swift */,
-				1392418F293E24FA0051AADB /* ModelEnum.swift */,
 			);
-			path = "Utilities+Helper";
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		135C3775293A939700041285 /* NetworkLayer */ = {
@@ -128,6 +127,14 @@
 				17F4369C288EF8630001D592 /* APIService.swift */,
 			);
 			path = URLSession;
+			sourceTree = "<group>";
+		};
+		13B5E81A293E311A006F2C2F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1392418F293E24FA0051AADB /* ModelEnum.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		13C2698F293B523B003C3BB3 /* podcast */ = {
@@ -189,11 +196,11 @@
 			isa = PBXGroup;
 			children = (
 				135C3773293A924400041285 /* App */,
-				135C3774293A934F00041285 /* Utilities+Helper */,
+				135C3774293A934F00041285 /* Utilities */,
 				135C3775293A939700041285 /* NetworkLayer */,
-				17DCA96D288E9A0000F20AD8 /* model */,
-				17DCA96B288E99CE00F20AD8 /* view */,
-				17DCA96C288E99E400F20AD8 /* viewmodel */,
+				17DCA96D288E9A0000F20AD8 /* Model */,
+				17DCA96B288E99CE00F20AD8 /* View */,
+				17DCA96C288E99E400F20AD8 /* Viewmodel */,
 				17DCA961288E999F00F20AD8 /* Assets.xcassets */,
 				17DCA963288E999F00F20AD8 /* Preview Content */,
 			);
@@ -208,7 +215,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		17DCA96B288E99CE00F20AD8 /* view */ = {
+		17DCA96B288E99CE00F20AD8 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				13C26992293B5274003C3BB3 /* Home */,
@@ -217,10 +224,10 @@
 				13C26991293B5263003C3BB3 /* ebook */,
 				13C2698F293B523B003C3BB3 /* podcast */,
 			);
-			path = view;
+			path = View;
 			sourceTree = "<group>";
 		};
-		17DCA96C288E99E400F20AD8 /* viewmodel */ = {
+		17DCA96C288E99E400F20AD8 /* Viewmodel */ = {
 			isa = PBXGroup;
 			children = (
 				17DCA970288E9A5800F20AD8 /* PodcastListViewModel.swift */,
@@ -228,18 +235,19 @@
 				17F436A2288EFAF50001D592 /* MovieListViewModel.swift */,
 				135C377B293A9DD500041285 /* EbookListViewModel.swift */,
 			);
-			path = viewmodel;
+			path = Viewmodel;
 			sourceTree = "<group>";
 		};
-		17DCA96D288E9A0000F20AD8 /* model */ = {
+		17DCA96D288E9A0000F20AD8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				13B5E81A293E311A006F2C2F /* Helper */,
 				13924187293E090E0051AADB /* Song.swift */,
 				13924189293E091A0051AADB /* Podcast.swift */,
 				1392418B293E09250051AADB /* Movie.swift */,
 				1392418D293E09330051AADB /* Ebook.swift */,
 			);
-			path = model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		17F436BE289008990001D592 /* search */ = {

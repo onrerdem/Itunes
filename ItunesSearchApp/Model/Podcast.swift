@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - PodcastResult
-struct PodcastResult: Codable {
+struct PodcastResult:  Codable {
     let resultCount: Int?
     let results: [Podcast]
 }

@@ -19,7 +19,7 @@ final class PodcastListViewModel: ObservableObject {
     let limit: Int = 20
     var page: Int = 0
     
-     var service =  APIService()
+    var service : IServiceManager =  APIService()
     
     var subscriptions = Set<AnyCancellable>()
     
