@@ -79,6 +79,7 @@ final class MusicListViewModel: ObservableObject {
         }
     }
     
+
     static func example() -> MusicListViewModel {
         let vm = MusicListViewModel()
         vm.musics = [Song.example()]

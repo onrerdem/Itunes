@@ -17,7 +17,10 @@ struct EbookRowView: View {
                              size: 60)
             
             VStack(alignment: .leading) {
-                Text(ebook.artistName! + " - " + ebook.trackName!)
+                HStack{
+                    Text(ebook.artistName ?? "NoName")
+                    Text(ebook.trackName ?? "NoName")
+                }
                     .font(.caption)
                     .foregroundColor(.gray)
             }

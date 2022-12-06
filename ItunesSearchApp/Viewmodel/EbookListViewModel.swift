@@ -77,7 +77,7 @@ final class EbookListViewModel: ObservableObject {
             }
         }
     }
-    
+
     static func example() -> EbookListViewModel {
         let vm = EbookListViewModel()
         vm.ebooks = [Ebook.example()]

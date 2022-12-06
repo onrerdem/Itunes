@@ -17,7 +17,10 @@ struct PodcastRowView: View {
                              size: 60)
             
             VStack(alignment: .leading) {
-                Text(podcast.artistName! + " - " + podcast.collectionName!)
+                HStack{
+                    Text(podcast.artistName ?? "NoName")
+                    Text(podcast.collectionName ?? "NoName")
+                }
                     .font(.caption)
                     .foregroundColor(.gray)
             }

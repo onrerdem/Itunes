@@ -16,11 +16,13 @@ struct EbookDetailView: View {
                              size: 200)
             
             VStack(alignment: .center) {
-                Text(ebook.artistName!)
-                Text(ebook.trackName!)
+                HStack{
+                    Text(ebook.artistName ?? "NoName")
+                    Text(ebook.trackName ?? "NoName")
+                }
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(ebook.releaseDate?.formatted() ?? Date().formatted())
+                Text( Constant.getFormattedDate(inputDate: ebook.releaseDate ?? String(Date().formatted())))
                 Text(String(ebook.price ?? 0.0))
             }
             .lineLimit(1)

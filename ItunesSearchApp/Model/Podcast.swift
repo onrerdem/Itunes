@@ -26,17 +26,17 @@ struct Podcast: Codable,Identifiable {
     let trackViewURL: String?
     let artworkUrl30, artworkUrl60, artworkUrl100: String?
     let collectionPrice, trackPrice, collectionHDPrice: Int?
-    let releaseDate: Date?
+    let releaseDate: String?
     let collectionExplicitness, trackExplicitness: Explicitness
-    let trackCount, trackTimeMillis: Int?
+    let trackCount /*, trackTimeMillis */: Int?
     let country: Country
     let currency: Currency
     let primaryGenreName: String?
-    let contentAdvisoryRating: ContentAdvisoryRating
+    //let contentAdvisoryRating: String?
     let artworkUrl600: String?
     let genreIDS, genres: [String]?
-    let artistID: Int?
-    let artistViewURL: String?
+    //let artistID: String?
+    //let artistViewURL: String?
 
     enum CodingKeys: String, CodingKey {
         case wrapperType, kind
@@ -48,16 +48,17 @@ struct Podcast: Codable,Identifiable {
         case trackViewURL = "trackViewUrl"
         case artworkUrl30, artworkUrl60, artworkUrl100, collectionPrice, trackPrice
         case collectionHDPrice = "collectionHdPrice"
-        case releaseDate, collectionExplicitness, trackExplicitness, trackCount, trackTimeMillis, country, currency, primaryGenreName, contentAdvisoryRating, artworkUrl600
+        case releaseDate, collectionExplicitness, trackExplicitness, trackCount, /*trackTimeMillis,*/ country, currency, primaryGenreName, /*contentAdvisoryRating,*/ artworkUrl600
         case genreIDS = "genreIds"
         case genres
-        case artistID = "artistId"
-        case artistViewURL = "artistViewUrl"
+        //case artistID = "artistId"
+        //case artistViewURL = "artistViewUrl"
     }
     
     
     
-    init(id: UUID = UUID(), wrapperType: WrapperType, kind: Kind, collectionID: Int?, trackID: Int?, artistName: String?, collectionName: String?, trackName: String?, collectionCensoredName: String?, trackCensoredName: String?, collectionViewURL: String?, feedURL: String?, trackViewURL: String?, artworkUrl30: String?, artworkUrl60: String?, artworkUrl100: String?, collectionPrice: Int?, trackPrice: Int?, collectionHDPrice: Int?, releaseDate: Date?, collectionExplicitness: Explicitness, trackExplicitness: Explicitness, trackCount: Int?, trackTimeMillis: Int?, country: Country, currency: Currency, primaryGenreName: String?, contentAdvisoryRating: ContentAdvisoryRating, artworkUrl600: String?, genreIDS: [String]?, genres: [String]?,artistID: Int?,  artistViewURL: String?) {
+    init(id: UUID = UUID(), wrapperType: WrapperType, kind: Kind, collectionID: Int?, trackID: Int?, artistName: String?, collectionName: String?, trackName: String?, collectionCensoredName: String?, trackCensoredName: String?, collectionViewURL: String?, feedURL: String?, trackViewURL: String?, artworkUrl30: String?, artworkUrl60: String?, artworkUrl100: String?, collectionPrice: Int?, trackPrice: Int?, collectionHDPrice: Int?, releaseDate: String?, collectionExplicitness: Explicitness, trackExplicitness: Explicitness, trackCount: Int?, /*trackTimeMillis: Int?,*/ country: Country, currency: Currency, primaryGenreName: String?, /*contentAdvisoryRating: String?,*/ artworkUrl600: String?, genreIDS: [String]?, genres: [String]?/*,artistID: String?,
+         artistViewURL: String?*/) {
         self.id = id
         self.wrapperType = wrapperType
         self.kind = kind
@@ -81,16 +82,16 @@ struct Podcast: Codable,Identifiable {
         self.collectionExplicitness = collectionExplicitness
         self.trackExplicitness = trackExplicitness
         self.trackCount = trackCount
-        self.trackTimeMillis = trackTimeMillis
+        /*self.trackTimeMillis = trackTimeMillis*/
         self.country = country
         self.currency = currency
         self.primaryGenreName = primaryGenreName
-        self.contentAdvisoryRating = contentAdvisoryRating
+        //self.contentAdvisoryRating = contentAdvisoryRating
         self.artworkUrl600 = artworkUrl600
         self.genreIDS = genreIDS
         self.genres = genres
-        self.artistID = artistID
-        self.artistViewURL = artistViewURL
+        //self.artistID = artistID
+        //self.artistViewURL = artistViewURL
     }
     
     init(from decoder: Decoder) throws {
@@ -113,25 +114,25 @@ struct Podcast: Codable,Identifiable {
         self.collectionPrice = try container.decode(Int.self,forKey: .collectionPrice)
         self.trackPrice = try container.decode(Int.self,forKey: .trackPrice)
         self.collectionHDPrice = try container.decode(Int.self,forKey: .collectionHDPrice)
-        self.releaseDate = try container.decode(Date.self,forKey: .releaseDate)
+        self.releaseDate = try container.decode(String.self,forKey: .releaseDate)
         self.collectionExplicitness = try container.decode(Explicitness.self,forKey: .collectionExplicitness)
         self.trackExplicitness = try container.decode(Explicitness.self,forKey: .trackExplicitness)
         self.trackCount = try container.decode(Int.self,forKey: .trackCount)
-        self.trackTimeMillis = try container.decode(Int.self,forKey: .trackTimeMillis)
+        /*self.trackTimeMillis = try container.decode(Int.self,forKey: .trackTimeMillis)*/
         self.country = try container.decode(Country.self,forKey: .country)
         self.currency = try container.decode(Currency.self,forKey: .currency)
         self.primaryGenreName = try container.decode(String.self,forKey: .primaryGenreName)
-        self.contentAdvisoryRating = try container.decode(ContentAdvisoryRating.self,forKey: .contentAdvisoryRating)
+        //self.contentAdvisoryRating = try container.decode(String.self,forKey: .contentAdvisoryRating)
         self.artworkUrl600 = try container.decode(String.self,forKey: .artworkUrl600)
         self.genreIDS = try container.decode([String].self,forKey: .genreIDS)
         self.genres = try container.decode([String].self,forKey: .genres)
-        self.artistID = try container.decode(Int.self,forKey: .artistID)
-        self.artistViewURL = try container.decode(String.self,forKey: .artistViewURL)
+        //self.artistID = try container.decode(String.self,forKey: .artistID)
+        //self.artistViewURL = try container.decode(String.self,forKey: .artistViewURL)
     }
     
     static func example() -> Podcast {
         
-        Podcast(wrapperType: WrapperType.track, kind: Kind.podcast, collectionID: 123, trackID: 123, artistName: "onur", collectionName: "this is onur", trackName: "doyamadım", collectionCensoredName: "xxx", trackCensoredName: "xxx", collectionViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", feedURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", trackViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl30: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl60: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl100: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", collectionPrice: 123, trackPrice: 123, collectionHDPrice: 123, releaseDate: Date(), collectionExplicitness: Explicitness.explicit, trackExplicitness: Explicitness.explicit, trackCount: 123, trackTimeMillis: 123, country: Country.usa, currency: Currency.usd, primaryGenreName: "xxx", contentAdvisoryRating: ContentAdvisoryRating.explicit, artworkUrl600: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", genreIDS: ["arabesk","fantezi"], genres: ["arabesk","fantezi"],artistID: 123,  artistViewURL: "xxx") 
+        Podcast(wrapperType: WrapperType.track, kind: Kind.podcast, collectionID: 123, trackID: 123, artistName: "onur", collectionName: "this is onur", trackName: "doyamadım", collectionCensoredName: "xxx", trackCensoredName: "xxx", collectionViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", feedURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", trackViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl30: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl60: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl100: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", collectionPrice: 123, trackPrice: 123, collectionHDPrice: 123, releaseDate: "2010-03-26T12:00:00Z", collectionExplicitness: Explicitness.explicit, trackExplicitness: Explicitness.explicit, trackCount: 123, /*trackTimeMillis: 123,*/ country: Country.usa, currency: Currency.usd, primaryGenreName: "xxx", /*contentAdvisoryRating: "explicit",*/ artworkUrl600: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", genreIDS: ["arabesk","fantezi"], genres: ["arabesk","fantezi"]/*,artistID: "123", artistViewURL: "xxx"*/ )
         
     }
 }

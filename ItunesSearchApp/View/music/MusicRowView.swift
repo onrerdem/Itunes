@@ -18,7 +18,10 @@ struct MusicRowView: View {
                              size: 60)
             
             VStack(alignment: .leading) {
-                Text(music.artistName! + " - " + music.collectionName!)
+                HStack{
+                    Text(music.artistName ?? "NoName")
+                    Text(music.collectionName ?? "NoName")
+                }
                     .font(.caption)
                     .foregroundColor(.gray)
             }

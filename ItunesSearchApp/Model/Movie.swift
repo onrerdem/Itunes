@@ -26,7 +26,7 @@ struct Movie: Codable,Identifiable {
     let previewURL: String?
     let artworkUrl30, artworkUrl60, artworkUrl100: String?
     let collectionPrice, trackPrice, collectionHDPrice, trackHDPrice: Double?
-    let releaseDate: Date?
+    let releaseDate: String?
     let collectionExplicitness, trackExplicitness: Explicitness
     let discCount, discNumber, trackCount, trackNumber: Int?
     let trackTimeMillis: Int?
@@ -61,7 +61,7 @@ struct Movie: Codable,Identifiable {
         case artistViewURL = "artistViewUrl"
     }
     
-    init(id: UUID = UUID(), wrapperType: WrapperType, kind: Kind, collectionID: Int?, trackID: Int?, artistName: String?, collectionName: String?, trackName: String?, collectionCensoredName: String?, trackCensoredName: String?, collectionArtistID: Int?, collectionArtistViewURL: String?, collectionViewURL: String?, trackViewURL: String?, previewURL: String?, artworkUrl30: String?, artworkUrl60: String?, artworkUrl100: String?, collectionPrice: Double?, trackPrice: Double?, collectionHDPrice: Double?, trackHDPrice: Double?, releaseDate: Date?, collectionExplicitness: Explicitness, trackExplicitness: Explicitness, discCount: Int?, discNumber: Int?, trackCount: Int?, trackNumber: Int?, trackTimeMillis: Int?, country: Country, currency: Currency, primaryGenreName: String?, contentAdvisoryRating: ContentAdvisoryRating, longDescription: String?, hasITunesExtras: Bool?, trackRentalPrice: Double?, trackHDRentalPrice: Double?, shortDescription: String?, artistID: Int?, artistViewURL: String?) {
+    init(id: UUID = UUID(), wrapperType: WrapperType, kind: Kind, collectionID: Int?, trackID: Int?, artistName: String?, collectionName: String?, trackName: String?, collectionCensoredName: String?, trackCensoredName: String?, collectionArtistID: Int?, collectionArtistViewURL: String?, collectionViewURL: String?, trackViewURL: String?, previewURL: String?, artworkUrl30: String?, artworkUrl60: String?, artworkUrl100: String?, collectionPrice: Double?, trackPrice: Double?, collectionHDPrice: Double?, trackHDPrice: Double?, releaseDate: String?, collectionExplicitness: Explicitness, trackExplicitness: Explicitness, discCount: Int?, discNumber: Int?, trackCount: Int?, trackNumber: Int?, trackTimeMillis: Int?, country: Country, currency: Currency, primaryGenreName: String?, contentAdvisoryRating: ContentAdvisoryRating, longDescription: String?, hasITunesExtras: Bool?, trackRentalPrice: Double?, trackHDRentalPrice: Double?, shortDescription: String?, artistID: Int?, artistViewURL: String?) {
         self.id = id
         self.wrapperType = wrapperType
         self.kind = kind
@@ -128,7 +128,7 @@ struct Movie: Codable,Identifiable {
         self.trackPrice = try container.decodeIfPresent(Double.self, forKey: .trackPrice)
         self.collectionHDPrice = try container.decodeIfPresent(Double.self, forKey: .collectionHDPrice)
         self.trackHDPrice = try container.decodeIfPresent(Double.self, forKey: .trackHDPrice)
-        self.releaseDate = try container.decodeIfPresent(Date.self, forKey: .releaseDate)
+        self.releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate)
         self.collectionExplicitness = try container.decode(Explicitness.self, forKey: .collectionExplicitness)
         self.trackExplicitness = try container.decode(Explicitness.self, forKey: .trackExplicitness)
         self.discCount = try container.decodeIfPresent(Int.self, forKey: .discCount)
@@ -151,7 +151,7 @@ struct Movie: Codable,Identifiable {
 
     
     static func example() -> Movie{
-        Movie(wrapperType: WrapperType.track, kind: Kind.featureMovie, collectionID: 123, trackID: 123, artistName: "onur", collectionName: "this is onur", trackName: "onur", collectionCensoredName: "onur", trackCensoredName: "onur", collectionArtistID: 123, collectionArtistViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", collectionViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", trackViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", previewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl30: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl60: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl100: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", collectionPrice: 9.99, trackPrice: 9.99, collectionHDPrice: 9.99, trackHDPrice: 9.99, releaseDate: Date(), collectionExplicitness: Explicitness.explicit, trackExplicitness: Explicitness.explicit, discCount: 123, discNumber: 123, trackCount: 123, trackNumber: 123, trackTimeMillis: 123, country: Country.usa, currency: Currency.usd, primaryGenreName: "xxx", contentAdvisoryRating: ContentAdvisoryRating.explicit, longDescription: "xxx", hasITunesExtras: false, trackRentalPrice: 9.99, trackHDRentalPrice: 9.99, shortDescription: "xxx", artistID: 123, artistViewURL: "xxx")
+        Movie(wrapperType: WrapperType.track, kind: Kind.featureMovie, collectionID: 123, trackID: 123, artistName: "onur", collectionName: "this is onur", trackName: "onur", collectionCensoredName: "onur", trackCensoredName: "onur", collectionArtistID: 123, collectionArtistViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", collectionViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", trackViewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", previewURL: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl30: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl60: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", artworkUrl100: "https://is2-ssl.mzstatic.com/image/thumb/Music/9f/ee/25/mzi.ygppkzdh.jpg/100x100bb.jpg", collectionPrice: 9.99, trackPrice: 9.99, collectionHDPrice: 9.99, trackHDPrice: 9.99, releaseDate: "2010-03-26T12:00:00Z", collectionExplicitness: Explicitness.explicit, trackExplicitness: Explicitness.explicit, discCount: 123, discNumber: 123, trackCount: 123, trackNumber: 123, trackTimeMillis: 123, country: Country.usa, currency: Currency.usd, primaryGenreName: "xxx", contentAdvisoryRating: ContentAdvisoryRating.explicit, longDescription: "xxx", hasITunesExtras: false, trackRentalPrice: 9.99, trackHDRentalPrice: 9.99, shortDescription: "xxx", artistID: 123, artistViewURL: "xxx")
     }
 }
 

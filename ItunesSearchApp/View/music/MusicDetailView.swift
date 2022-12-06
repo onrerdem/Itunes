@@ -18,11 +18,13 @@ struct MusicDetailView: View {
                              size: 200)
             
             VStack(alignment: .center) {
-                Text(music.artistName!)
-                Text(music.collectionName!)
+                HStack{
+                    Text(music.artistName ?? "NoName")
+                    Text(music.collectionName ?? "NoName")
+                }
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(music.releaseDate?.formatted() ?? Date().formatted())
+                Text( Constant.getFormattedDate(inputDate: music.releaseDate ?? String(Date().formatted())))
                 Text(String(music.collectionPrice ?? 0.0))
             }
             .lineLimit(1)

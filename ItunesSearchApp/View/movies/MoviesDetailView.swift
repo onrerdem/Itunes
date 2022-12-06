@@ -16,11 +16,13 @@ struct MoviesDetailView: View {
                              size: 200)
             
             VStack(alignment: .center) {
-                Text(movie.artistName!)
-                Text(movie.collectionName!)
+                HStack{
+                    Text(movie.artistName ?? "NoName")
+                    Text(movie.collectionName ?? "NoName")
+                }
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(movie.releaseDate?.formatted() ?? Date().formatted())
+                Text( Constant.getFormattedDate(inputDate: movie.releaseDate ?? String(Date().formatted())))
                 Text(String(movie.collectionPrice ?? 0.0))
             }
             .lineLimit(1)

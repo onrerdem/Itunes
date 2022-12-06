@@ -16,11 +16,13 @@ struct PodcastDetailView: View {
                              size: 200)
             
             VStack(alignment: .center) {
-                Text(podcast.artistName!)
-                Text(podcast.collectionName!)
+                HStack{
+                    Text(podcast.artistName ?? "NoName")
+                    Text(podcast.collectionName ?? "NoName")
+                }
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(podcast.releaseDate?.formatted(date: Date.FormatStyle.DateStyle.omitted, time: Date.FormatStyle.TimeStyle.shortened) ?? Date().formatted(date: Date.FormatStyle.DateStyle.omitted, time: Date.FormatStyle.TimeStyle.shortened))
+                Text( Constant.getFormattedDate(inputDate: podcast.releaseDate ?? String(Date().formatted())))
                 Text(String(podcast.collectionPrice ?? 0))
             }
             .lineLimit(1)

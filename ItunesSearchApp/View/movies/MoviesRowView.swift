@@ -17,12 +17,15 @@ struct MoviesRowView: View {
                              size: 60)
             
             VStack(alignment: .leading) {
-                Text(movie.artistName! + " - " + movie.collectionName!)
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                HStack{
+                    Text(movie.artistName ?? "NoName")
+                    Text(movie.collectionName ?? "NoName")
+                }
+                .font(.caption)
+                .foregroundColor(.gray)
             }
             .lineLimit(1)
-
+            
         }
     }
 }
