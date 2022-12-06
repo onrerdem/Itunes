@@ -78,6 +78,7 @@ final class PodcastListViewModel: ObservableObject {
         }
     }
     
+   
     static func example() -> PodcastListViewModel {
         let vm = PodcastListViewModel()
         vm.podcasts = [Podcast.example()]

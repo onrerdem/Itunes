@@ -9,15 +9,15 @@ import Foundation
 
 struct APIService : IServiceManager {
     func fetch<T>(type: T.Type, searchTerm: String, entity: EntityType, page: Int, limit: Int, completion: @escaping (Result<T, APIError>) -> Void) where T : Decodable, T : Encodable {
-
+        
         guard let url = createURL(for: searchTerm, type: entity, page: page, limit: limit) else {
-                    let error = APIError.badURL
-                    completion(Result.failure(error))
-                    return
-                }
+            let error = APIError.badURL
+            completion(Result.failure(error))
+            return
+        }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-
+            
             if let error = error as? URLError {
                 completion(Result.failure(APIError.urlSession(error)))
             } else if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
@@ -25,7 +25,7 @@ struct APIService : IServiceManager {
             } else if let data = data {
                 
                 do {
-                    let result = try JSONDecoder().decode(type, from: data)
+                    let result = try JSONDecoder().decode(type.self, from: data)
                     completion(Result.success(result))
                 } catch {
                     completion(Result.failure(.decoding(error as? DecodingError)))
@@ -35,9 +35,11 @@ struct APIService : IServiceManager {
     }
     
     func createURL(for searchTerm: String, type: EntityType, page: Int?, limit: Int?) -> URL? {
-
+        
         var queryItems = [URLQueryItem(name: "term", value: searchTerm),
-                          URLQueryItem(name: "entity", value: type.rawValue)]
+                          URLQueryItem(name: "entity", value: type.rawValue),
+                          URLQueryItem(name: "country", value: "us")
+        ]
         
         if let page = page, let limit = limit {
             let offset = page * limit
@@ -49,7 +51,8 @@ struct APIService : IServiceManager {
         components?.queryItems = queryItems
         return components?.url
     }
-
+    
+    
     
     
 }

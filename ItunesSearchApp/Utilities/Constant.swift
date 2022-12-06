@@ -10,3 +10,4 @@ import Foundation
 struct Constant {
     static let baseURL = "https://itunes.apple.com/search"
 }
+

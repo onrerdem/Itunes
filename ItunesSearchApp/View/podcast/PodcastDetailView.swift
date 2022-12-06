@@ -20,7 +20,7 @@ struct PodcastDetailView: View {
                 Text(podcast.collectionName!)
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text(podcast.releaseDate?.formatted() ?? Date().formatted())
+                Text(podcast.releaseDate?.formatted(date: Date.FormatStyle.DateStyle.omitted, time: Date.FormatStyle.TimeStyle.shortened) ?? Date().formatted(date: Date.FormatStyle.DateStyle.omitted, time: Date.FormatStyle.TimeStyle.shortened))
                 Text(String(podcast.collectionPrice ?? 0))
             }
             .lineLimit(1)
